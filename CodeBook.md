@@ -56,7 +56,7 @@ There are 5 parts:
 
 ## How ```run_analysis.R``` implements the above steps:
 
-You can run the code from any work directory. The code will download the zipfile through the original Data link above. It requires ```reshapre2``` and ```pdlyr``` librareis. The code:
+You can run the code from any work directory. The code will download the zipfile through the original Data link above. It requires ```reshapre2``` and ```plyr``` librareis. The code:
 * Loads the features and activity labels.
 * Extracts the mean and standard deviation column names and data.
 * Process the data. There are two parts processing test and train data respectively.
