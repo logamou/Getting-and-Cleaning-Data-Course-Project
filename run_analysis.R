@@ -64,12 +64,14 @@ features <- read.table("features.txt", row.names = 1)
   names(MergedData) <- gsub("Gyro", "Gyroscope", names(MergedData))
   names(MergedData) <- gsub("Mag", "Magnitude", names(MergedData))
   names(MergedData) <- gsub("BodyBody", "Body", names(MergedData))
-  
+ 
 #step 5#-- From the data set in step 4, creates a second, independent tidy data set with
 # the average of each variable for each activity and each subject.
   
   library(plyr)
-  Data2 <- aggregate(. ~subject + activity, MergedData, mean)
+  MergedData.extracted[, "subject"] <- rbind(subject_test, subject_train)
+  MergedData.extracted[, "activity"] <- rbind(y_test, y_train)
+  Data2 <- aggregate(. ~subject + activity, MergedData.extracted, mean)
   Data2 <- Data2[order(Data2$subject,Data2$activity),]
   write.table(Data2, file = "tidydata.txt",row.name=FALSE)
   
